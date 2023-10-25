@@ -207,6 +207,8 @@ public:
 };
 
 int main() {
+cout << "\t\t\t\t\t~~~Welcome to Symbiosis Hospital~~~";
+  
     HospitalManagementSystem hospital;
     int ch;
   do
@@ -227,7 +229,7 @@ int main() {
 	  break;
 	
 	case 3:
-	  cout << "\t\t\t\tWelcome to Appointment Desk"<<endl;
+	  cout << "\t\t\t\t~~~Welcome to Appointment Desk~~~"<<endl;
 	  hospital.addAppointment ();
 	  break;
 	
@@ -267,6 +269,12 @@ int main() {
         cin>>m;
         hospital.searchPersonById(m);
         break;
+      
+      case 10:
+        cout<<"~~~Thank you~~~"<<endl;
+      
+      default:
+        cout<<"~~~Wrong Input~~~"<<endl;
 	    }
 
 
