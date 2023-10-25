@@ -49,28 +49,11 @@ private:
 
 class HospitalManagementSystem {
 public:
-    void addDoctor() {
-        int id;
-        string name;
-        string specialty;
-        
-        cout<<"\nEnter Doctor id:";
-        cin>>id;
-        cout<<"\nEnter Doctor Name: ";
-        cin>>name;
-        cout<<"\nSpecialty: ";
-        cin>>specialty;
-        
+    void addDoctor(int id, string name, string specialty) {
         doctors.push_back(Doctor(id, name, specialty));
     }
 
-    void addPatient() {
-        int id;
-        string name;
-        cout<<"\nEnter Patient id:";
-        cin>>id;
-        cout<<"\nEnter Patient Name: ";
-        cin>>name;
+    void addPatient(int id, string name) {
         patients.push_back(Patient(id, name));
     }
 
@@ -208,67 +191,32 @@ public:
 
 int main() {
     HospitalManagementSystem hospital;
-    int ch;
-  do
-    {
 
-      cout <<
-"\n\nEnter your choice: \n1. Add Doctor \n2. Add Patient \n3. Book Appointment \n4. Display List of Doctors \n5. Display List of Patients \n6. Check Doctors appoinment details \n7. Check Patients appointment \n8. Search Doctor \n9. Search Patient \n10. Exit\n";
-      cin >> ch;
+    hospital.addDoctor(1, "Dr. Smith", "Cardiologist");
+    hospital.addDoctor(2, "Dr. Johnson", "Pediatrician");
+    hospital.addDoctor(3, "Dr. Davis", "Dermatologist");
 
-      switch (ch)
-	{
-	case 1:
-      hospital.addDoctor ();
-	  break;
+    hospital.addPatient(101, "John");
+    hospital.addPatient(102, "Alice");
 
-	case 2:
-	  hospital.addPatient ();
-	  break;
-	
-	case 3:
-	  cout << "\t\t\t\tWelcome to Appointment Desk"<<endl;
-	  hospital.addAppointment ();
-	  break;
-	
-	case 4:
-	  cout << "List of Doctors:" << endl;
-	  hospital.listDoctors ();
-	  break;
-	
-	case 5:
-	  cout << "\nList of Patients:" << endl;
-	  hospital.listPatients ();
-	  break;
-	
-	case 6:
-      int x;
-	  cout << "\nEnter doctor ID you want to get details: ";
-	  cin >> x;
-	  hospital.displayPatientsForDoctor (x);
-      break;
+    cout << "List of Doctors:" << endl;
+    hospital.listDoctors();
+
+    cout << "\nList of Patients:" << endl;
+    hospital.listPatients();
     
-    case 7:
-      int y; 
-      cout << "\nEnter patient ID you want to get details: ";
-	  cin >> y;
-      hospital.getPatientAppointmentWithDoctor (y);
-      break;
+    cout<<"\nAppointment"<<endl;
+    hospital.addAppointment();
     
-    case 8:
-        int l;
-        cout << "\nEnter doctor ID: ";
-        cin>>l;
-        hospital.searchPersonById(l);
-        break;
-    case 9:
-        int m;
-        cout << "\nEnter doctor ID: ";
-        cin>>m;
-        hospital.searchPersonById(m);
-        break;
-	    }
+    cout << "\nAppointments with Doctor 1:" << endl;
+    hospital.displayPatientsForDoctor(1);
+    
+    cout << "\nAppointments for Patient 101:" << endl;
+    hospital.getPatientAppointmentWithDoctor(101);
 
+    cout << "\nSearch for Person with ID 2:" << endl;
+    hospital.searchPersonById(2);
 
-    }while (ch != 10);
+    
+    return 0;
 }
